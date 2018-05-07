@@ -1,0 +1,19 @@
+#pragma once
+
+#include "glm/glm.hpp"
+
+#include "Object.h"
+
+class Sphere : public Object
+{
+public:
+	glm::vec3 center;
+	double radius;
+
+	Sphere();
+	Sphere(glm::vec3 color, double albedo, glm::vec3 center, double radius);
+	~Sphere();
+
+	Hit intersect(const Ray &ray);
+	glm::vec3 calculateNormal(glm::vec3 location);
+};
