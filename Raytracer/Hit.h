@@ -6,17 +6,17 @@
 
 #include "Object.h"
 
-const double D_INFINITY = std::numeric_limits<double>::max();
+const float F_INFINITY = std::numeric_limits<float>::max();
 
 class Hit
 {
 public:
-	double t;
+	float t;
 	glm::vec3 location;
 	Object* hitObject;
 
 	Hit();
-	Hit(double t, glm::vec3 location, Object* hitObject);
+	Hit(float t, glm::vec3 location, Object* hitObject);
 	~Hit();
 };
 

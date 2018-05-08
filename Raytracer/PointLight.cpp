@@ -9,7 +9,7 @@ PointLight::PointLight()
 	position = position;
 }
 
-PointLight::PointLight(glm::vec3 color, double intensity, glm::vec3 position) : Light(color, intensity)
+PointLight::PointLight(glm::vec3 color, float intensity, glm::vec3 position) : Light(color, intensity)
 {
 	this->position = position;
 }
@@ -21,7 +21,7 @@ PointLight::~PointLight()
 glm::vec3 PointLight::getColorIntensity(glm::vec3 point)
 {
 	glm::vec3 lightDir = position - point;
-	double r2 = lightDir.x * lightDir.x + lightDir.y * lightDir.y + lightDir.z * lightDir.z;
+	float r2 = lightDir.x * lightDir.x + lightDir.y * lightDir.y + lightDir.z * lightDir.z;
 	return (float)intensity * color / (4 * (float)M_PI * (float)r2);
 }
 
@@ -31,9 +31,9 @@ glm::vec3 PointLight::getLightDirection(glm::vec3 point)
 	return glm::normalize(lightDir);
 }
 
-double PointLight::getLightDist(glm::vec3 point)
+float PointLight::getLightDist(glm::vec3 point)
 {
 	glm::vec3 lightDir = position - point;
-	double r2 = lightDir.x * lightDir.x + lightDir.y * lightDir.y + lightDir.z * lightDir.z;
+	float r2 = lightDir.x * lightDir.x + lightDir.y * lightDir.y + lightDir.z * lightDir.z;
 	return sqrt(r2);
 }

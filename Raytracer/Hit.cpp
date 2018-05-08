@@ -2,12 +2,12 @@
 
 Hit::Hit()
 {
-	t = D_INFINITY;
+	t = F_INFINITY;
 	location = glm::vec3(0, 0, 0);
 	hitObject = NULL;
 }
 
-Hit::Hit(double t, glm::vec3 location, Object* hitObject)
+Hit::Hit(float t, glm::vec3 location, Object* hitObject)
 {
 	this->t = t;
 	this->location = location;

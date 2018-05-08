@@ -14,10 +14,10 @@ Scene::Scene()
 	objects = new std::vector<std::unique_ptr<Object>>();
 	lights = new std::vector<std::unique_ptr<Light>>();
 	camera = Camera();
-	bias = 0.001;
+	bias = 0.001f;
 }
 
-Scene::Scene(glm::vec3 backgroundColor, std::vector<std::unique_ptr<Object>> *objects, std::vector<std::unique_ptr<Light>> *lights, Camera camera, double bias)
+Scene::Scene(glm::vec3 backgroundColor, std::vector<std::unique_ptr<Object>> *objects, std::vector<std::unique_ptr<Light>> *lights, Camera camera, float bias)
 {
 	this->backgroundColor = backgroundColor;
 	this->objects = objects;
@@ -75,7 +75,7 @@ glm::vec3 Scene::castRay(Ray &ray)
 		
 		/*PointLight light = *((PointLight*)lights->at(0).get());
 		glm::vec3 normal = hit.hitObject->calculateNormal(hit.location);
-		double lightDist = light.getLightDist(hit.location);
+		float lightDist = light.getLightDist(hit.location);
 		Ray shadowRay = Ray(hit.location + normal * (float)bias, -light.getLightDirection(hit.location));
 		Hit shadowHit = trace(shadowRay);
 		bool visible = true;

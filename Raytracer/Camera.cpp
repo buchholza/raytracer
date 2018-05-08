@@ -15,11 +15,11 @@ Camera::Camera()
 	this->imageWidth = 640;
 	this->imageHeight = 480;
 	this->fov = 60;
-	aspectRatio = imageWidth / (double)imageHeight;
-	scale = tan(glm::radians(fov * 0.5));
+	aspectRatio = imageWidth / (float)imageHeight;
+	scale = (float)tan(glm::radians(fov * 0.5));
 }
 
-Camera::Camera(glm::vec3 position, glm::vec3 direction, glm::vec3 up, uint32_t imageWidth, uint32_t imageHeight, double fov)
+Camera::Camera(glm::vec3 position, glm::vec3 direction, glm::vec3 up, uint32_t imageWidth, uint32_t imageHeight, float fov)
 {
 	this->position = position;
 	this->direction = direction;
@@ -30,8 +30,8 @@ Camera::Camera(glm::vec3 position, glm::vec3 direction, glm::vec3 up, uint32_t i
 	this->imageWidth = imageWidth;
 	this->imageHeight = imageHeight;
 	this->fov = fov;
-	aspectRatio = imageWidth / (double)imageHeight;
-	scale = tan(glm::radians(fov * 0.5));
+	aspectRatio = imageWidth / (float)imageHeight;
+	scale = (float)tan(glm::radians(fov * 0.5));
 }
 
 Camera::~Camera()
@@ -47,8 +47,8 @@ std::vector<Ray> Camera::generateRays()
 	{
 		for(uint32_t i = 0; i < imageWidth; i++)
 		{
-			double x = (2 * (i + 0.5) / (double)imageWidth - 1) * aspectRatio * scale;
-			double y = (1 - 2 * (j + 0.5) / (double)imageHeight) * scale;
+			float x = (2 * (i + 0.5f) / (float)imageWidth - 1) * aspectRatio * scale;
+			float y = (1 - 2 * (j + 0.5f) / (float)imageHeight) * scale;
 			glm::vec3 direction = glm::normalize(glm::vec3(cameraToWorld * glm::vec4(x, y, 1, 0)));
 
 			rays.push_back(Ray(origin, direction));

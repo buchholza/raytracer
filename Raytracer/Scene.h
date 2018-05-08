@@ -20,10 +20,10 @@ public:
 	std::vector<std::unique_ptr<Object>> *objects;
 	std::vector<std::unique_ptr<Light>> *lights;
 	Camera camera;
-	double bias;
+	float bias;
 
 	Scene();
-	Scene(glm::vec3 backgroundColor, std::vector<std::unique_ptr<Object>> *objects, std::vector<std::unique_ptr<Light>> *lights, Camera camera, double bias);
+	Scene(glm::vec3 backgroundColor, std::vector<std::unique_ptr<Object>> *objects, std::vector<std::unique_ptr<Light>> *lights, Camera camera, float bias);
 	~Scene();
 
 	glm::vec3* render();

@@ -11,7 +11,7 @@ Plane::Plane()
 	normal = glm::vec3(0, 1, 0);
 }
 
-Plane::Plane(glm::vec3 color, double albedo, glm::vec3 position, glm::vec3 normal) : Object(color, albedo)
+Plane::Plane(glm::vec3 color, float albedo, glm::vec3 position, glm::vec3 normal) : Object(color, albedo)
 {
 	this->position = position;
 	this->normal = glm::normalize(normal);
@@ -25,11 +25,11 @@ Hit Plane::intersect(const Ray &ray)
 {
 	Hit hit;
 
-	double denom = glm::dot(normal, ray.direction);
+	float denom = glm::dot(normal, ray.direction);
 	if(abs(denom) > 1e-6)
 	{
 		glm::vec3 h = position - ray.origin;
-		double t = glm::dot(h, normal) / denom;
+		float t = glm::dot(h, normal) / denom;
 		if(t >= 0)
 		{
 			hit.t = t;

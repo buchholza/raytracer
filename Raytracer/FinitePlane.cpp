@@ -11,7 +11,7 @@ FinitePlane::FinitePlane() : Plane()
 	width = 1;
 }
 
-FinitePlane::FinitePlane(glm::vec3 color, double albedo, glm::vec3 position, glm::vec3 normal, glm::vec3 lengthDir, double length, glm::vec3 widthDir, double width) : Plane(color, albedo, position, normal)
+FinitePlane::FinitePlane(glm::vec3 color, float albedo, glm::vec3 position, glm::vec3 normal, glm::vec3 lengthDir, float length, glm::vec3 widthDir, float width) : Plane(color, albedo, position, normal)
 {
 	this->lengthDir = glm::normalize(lengthDir);
 	this->length = length;
@@ -27,11 +27,11 @@ Hit FinitePlane::intersect(const Ray &ray)
 {
 	Hit hit;
 
-	double denom = glm::dot(normal, ray.direction);
+	float denom = glm::dot(normal, ray.direction);
 	if(abs(denom) > 1e-6)
 	{
 		glm::vec3 h = position - ray.origin;
-		double t = glm::dot(h, normal) / denom;
+		float t = glm::dot(h, normal) / denom;
 		if(t >= 0)
 		{
 			glm::vec3 location = ray.origin + (float)t * ray.direction;

@@ -8,10 +8,10 @@ class Sphere : public Object
 {
 public:
 	glm::vec3 center;
-	double radius;
+	float radius;
 
 	Sphere();
-	Sphere(glm::vec3 color, double albedo, glm::vec3 center, double radius);
+	Sphere(glm::vec3 color, float albedo, glm::vec3 center, float radius);
 	~Sphere();
 
 	Hit intersect(const Ray &ray);

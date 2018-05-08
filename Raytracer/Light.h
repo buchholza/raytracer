@@ -5,11 +5,11 @@
 class Light
 {
 public:
-	double intensity;
+	float intensity;
 	glm::vec3 color;
 
 	Light();
-	Light(glm::vec3 color, double intensity);
+	Light(glm::vec3 color, float intensity);
 	~Light();
 };
 

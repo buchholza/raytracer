@@ -10,10 +10,10 @@ class Object
 {
 public:
 	glm::vec3 color;
-	double albedo;
+	float albedo;
 
 	Object();
-	Object(glm::vec3 color, double albedo);
+	Object(glm::vec3 color, float albedo);
 	~Object();
 	
 	virtual Hit intersect(const Ray &ray) = 0;

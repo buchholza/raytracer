@@ -1,5 +1,6 @@
 #include <iostream>
 #include <SDL.h>
+#include <time.h>
 
 #include "glm/glm.hpp"
 
@@ -20,11 +21,10 @@ Scene setupScene()
 {
 	Scene scene;
 
-	std::vector<std::unique_ptr<Object>> objects;
-	scene.objects->push_back(std::unique_ptr<Object>(new Sphere(glm::vec3(255, 105, 180), 0.18, glm::vec3(0, 0, -5), 1)));
-	scene.objects->push_back(std::unique_ptr<Object>(new Sphere(glm::vec3(15, 105, 15), 0.18, glm::vec3(3, 0, -5), 1)));
-	//scene.objects->push_back(std::unique_ptr<Object>(new Plane(glm::vec3(255, 255, 255), 0.18, glm::vec3(0, -1, -3), glm::vec3(0, 1, 0))));
-	scene.objects->push_back(std::unique_ptr<Object>(new FinitePlane(glm::vec3(255, 255, 255), 0.18, glm::vec3(0, -1, -5), glm::vec3(0, 1, 0), glm::vec3(0, 0, 1), 4.5, glm::vec3(1, 0, 0), 3)));
+	scene.objects->push_back(std::unique_ptr<Object>(new Sphere(glm::vec3(255, 105, 180), 0.18f, glm::vec3(0, 0, -5), 1)));
+	scene.objects->push_back(std::unique_ptr<Object>(new Sphere(glm::vec3(15, 105, 15), 0.18f, glm::vec3(2.5f, 0, -5), 0.5f)));
+	//scene.objects->push_back(std::unique_ptr<Object>(new Plane(glm::vec3(255, 255, 255), 0.18f, glm::vec3(0, -1, -3), glm::vec3(0, 1, 0))));
+	scene.objects->push_back(std::unique_ptr<Object>(new FinitePlane(glm::vec3(255, 255, 255), 0.18f, glm::vec3(0, -1, -5), glm::vec3(0, 1, 0), glm::vec3(0, 0, 1), 7.5f, glm::vec3(1, 0, 0), 5)));
 
 	scene.lights->push_back(std::unique_ptr<Light>(new DirectionalLight(glm::vec3(255, 255, 255), 20, glm::vec3(-1, -1, 0))));
 	//scene.lights->push_back(std::unique_ptr<Light>(new PointLight(glm::vec3(255, 255, 255), 255, glm::vec3(0, 3, -5))));

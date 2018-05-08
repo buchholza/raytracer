@@ -21,12 +21,12 @@ public:
 	// Image members
 	uint32_t imageWidth;
 	uint32_t imageHeight;
-	double fov;
-	double aspectRatio;
-	double scale;
+	float fov;
+	float aspectRatio;
+	float scale;
 
 	Camera();
-	Camera(glm::vec3 position, glm::vec3 direction, glm::vec3 up, uint32_t imageWidth, uint32_t imageHeight, double fov);
+	Camera(glm::vec3 position, glm::vec3 direction, glm::vec3 up, uint32_t imageWidth, uint32_t imageHeight, float fov);
 	~Camera();
 
 	std::vector<Ray> generateRays();

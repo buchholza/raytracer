@@ -9,7 +9,7 @@ Sphere::Sphere()
 	radius = 0;
 }
 
-Sphere::Sphere(glm::vec3 color, double albedo, glm::vec3 center, double radius) : Object(color, albedo)
+Sphere::Sphere(glm::vec3 color, float albedo, glm::vec3 center, float radius) : Object(color, albedo)
 {
 	this->center = center;
 	this->radius = radius;
@@ -33,21 +33,21 @@ Hit Sphere::intersect(const Ray &ray)
 	Hit hit;
 
 	glm::vec3 h = center - ray.origin; // Hypotenuse of A
-	double t_ac = glm::dot(h, glm::normalize(ray.direction)); // Parametric value of c along the ray
+	float t_ac = glm::dot(h, glm::normalize(ray.direction)); // Parametric value of c along the ray
 	if(t_ac < 0) // If negative, any intersection is behind the camera and can't be seen, so return empty hit
 	{
 		return hit;
 	}
 	
-	double d2 = glm::dot(h, h) - t_ac * t_ac; // Square of the length of the line segment between c and the sphere's center
+	float d2 = glm::dot(h, h) - t_ac * t_ac; // Square of the length of the line segment between c and the sphere's center
 	if(d2 > radius * radius) // If d^2 is greater than radius^2, then the ray misses the sphere, so return 
 	{
 		return hit;
 	}
 
-	double t_bc = sqrt(radius * radius - d2); // Length of line segment from first intersection to the point c
-	double t0 = t_ac - t_bc; // The first intersection happens t_bc units before t_ac
-	double t1 = t_ac + t_bc; // The second happens t_bc units after
+	float t_bc = sqrt(radius * radius - d2); // Length of line segment from first intersection to the point c
+	float t0 = t_ac - t_bc; // The first intersection happens t_bc units before t_ac
+	float t1 = t_ac + t_bc; // The second happens t_bc units after
 
 	// TODO: Figure out if swapping t0 and t1 is ever necessary
 
